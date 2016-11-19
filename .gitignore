@@ -1,0 +1,5 @@
+*.jar
+*.properties
+*.txt
+node_modules
+logs
