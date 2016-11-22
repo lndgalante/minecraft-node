@@ -1,14 +1,13 @@
-const MinecraftServer = require('./minecraft-sv');
-const minecraftServer = new MinecraftServer();
+const MinecraftServer = require('./minecraft-sv')
+const minecraftServer = new MinecraftServer()
 
-minecraftServer.welcome()
-minecraftServer.askMinRam()
-minecraftServer.askMaxRam()
-minecraftServer.askServerFileName()
-minecraftServer.launchServer()
-minecraftServer.acceptAgreement()
-minecraftServer.launchServer()
-    // minecraftServer.showIp()
+minecraftServer.readSetup()
 
+// minecraftServer.welcome()
+// minecraftServer.runSetup()
+// minecraftServer.showSetup()
+// minecraftServer.acceptAgreement()
+// minecraftServer.launchServer()
+// minecraftServer.showIp()
 
 // Minecraft Version 1.11 - 11/14/16
