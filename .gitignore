@@ -1,5 +1,9 @@
 *.jar
 *.properties
 *.txt
+*.json
+.DS_Store
 node_modules
+world
 logs
+client
