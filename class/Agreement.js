@@ -1,13 +1,14 @@
 module.exports =
   class Agreement {
     constructor () {
+      this.fs = require('fs')
       this.agreementText = 'eula=true'
     }
     writeEula () {
-      fs.writeFileSync('eula.txt', this.agreementText, (err) => {
+      this.fs.writeFileSync('eula.txt', this.agreementText, (err) => {
         if (err) throw err
-        console.log('Agreement accepted')
-        console.log('For more info go to https://account.mojang.com/documents/minecraft_eula')
       })
+      console.log('Agreement accepted')
+      console.log('For more info: https://account.mojang.com/documents/minecraft_eula')
     }
 }
