@@ -13,46 +13,6 @@ module.exports =
       this.gui = ''
       this.command = ''
       this.serverSetupFile = 'server-setup.json'
-      // Server Properties
-      this.serverPropertiesFile = 'server-properties.json'
-      this.properties = this.propertiesReader('server.properties')
-      this.maxTickTime = 0
-      this.generatorSettings = ''
-      this.forceGameMode = ''
-      this.allowNether = ''
-      this.gameMode = 0
-      this.enableQuery = false
-      this.playerIdleTimeout = 0
-      this.difficulty = 1
-      this.spawnMonsters = true
-      this.opPermissionLevel = 4
-      this.announcePlayerAchievements = true
-      this.pvp = true
-      this.snooperEnabled = true
-      this.levelType = 'default'
-      this.hardcore = false
-      this.enableCommandBlock = false
-      this.maxPlayers = 20
-      this.networkCompressionThreshold = 256
-      this.resourcePackSha1 = ''
-      this.maxWorldSize = 29999984
-      this.serverPort = 25565
-      this.serverIp = ''
-      this.spawnNpcs = true
-      this.allowFlight = false
-      this.levelName = 'world'
-      this.viewDistance = 10
-      this.resourcePack = ''
-      this.spawnAnimals = true
-      this.whiteList = false
-      this.generateStructures = true
-      this.onlineMode = false
-      this.maxBuildHeight = 256
-      this.levelSeed = ''
-      this.preventProxyConnections = false
-      this.enableRcon = false
-      this.motd = 'A minecraft server'
-      this.readProperties()
     }
     showProperties () {
       console.log('------------------------------------------------')

@@ -1,7 +1,7 @@
-const MinecraftServer = require('./minecraft-sv')
-const minecraftServer = new MinecraftServer()
+// const MinecraftServer = require('./class/MinecraftServer')
+// const minecraftServer = new MinecraftServer()
 
-minecraftServer.readSetup()
+// minecraftServer.readSetup()
 
 // minecraftServer.readProperties() minecraftServer.welcome()
 // minecraftServer.runSetup() minecraftServer.showSetup()
@@ -10,3 +10,8 @@ minecraftServer.readSetup()
 // eula=true in order to accept the agreement and launch the server online-mode
 // in server.properties must set to false in order to try LAN save .json to java
 // .properties make a server-properties.json
+
+// const Properties = require('./class/Properties')
+// const properties = new Properties()
+
+// properties.menu()
