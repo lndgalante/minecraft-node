@@ -27,6 +27,25 @@ This is not recommended but will allow you to try your server quickly
 
 4) Write false and press ENTER
 
+## Allow only certain usernames (whitelist)
+Doing this only the usernames in the whitelist will be able to connect to your server
+
+1) Launch with `node index.js`
+
+2) Select MODIFY PROPERTIES with character 5 and press ENTER
+
+3) Select Online Mode with character 31 and press ENTER
+
+4) Write false and press ENTER
+
+5) Select MODIFY PROPERTIES with character 5 and press ENTER
+
+6) Select White List with character 29 and press ENTER
+
+6) Select LAUNCH SERVER with character 1 and press ENTER
+
+7) Write `whitelist add username` and `whitelist reload`
+
 ## Port Forwarding
 This is not needed for LAN mode.
 
