@@ -16,7 +16,8 @@ Small script to launch a Minecraft server easily!
 
 4) Enjoy!
 
-## LAN Mode
+## Allow un-authenticated users
+This is not recommended but will allow you to try your server quickly
 
 1) Launch with `node index.js`
 
