@@ -2,7 +2,7 @@
   "name": "minecraft-node",
   "version": "1.0.0",
   "description": "Small script to launch a Minecraft server easily!",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
     "jsonfile": "^2.4.0",
     "properties-parser": "^0.3.1",
@@ -10,7 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
