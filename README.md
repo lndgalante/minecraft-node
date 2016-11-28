@@ -1,13 +1,9 @@
 ## Description
 Small script to launch a Minecraft server easily!
 
----
-
 ## Requirements
  * [Minecraft Server](https://minecraft.net)
  * [Node.js 7+](http://nodejs.org)
-
----
 
 ## How to
 
@@ -19,8 +15,6 @@ Small script to launch a Minecraft server easily!
 
 4) Enjoy!
 
----
-
 ## LAN Mode
 
 1) Launch with `node index.js`
@@ -30,8 +24,6 @@ Small script to launch a Minecraft server easily!
 3) Select Online Mode with character 31 and press ENTER
 
 4) Write false and press ENTER
-
----
 
 ## Future features
 - [ ] Being able to install different mods
