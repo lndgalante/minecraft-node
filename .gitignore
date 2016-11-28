@@ -3,6 +3,7 @@
 *.txt
 *.json
 *.log
+!package.json
 .DS_Store
 node_modules
 world
