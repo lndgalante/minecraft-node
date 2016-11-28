@@ -40,4 +40,6 @@ Small script to launch a Minecraft server easily!
 
 - [ ] Show recommended RAM on Setup
 
+- [ ] Automatic deploy to mount a server on Heroku
+
 - [x] Take input to do admin commands like `/op name`
