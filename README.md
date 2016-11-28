@@ -47,3 +47,6 @@ This is not needed for LAN mode.
 - [x] Take input to do admin commands like `/op name`
 
 - [ ] Detect if the server is on a 64-bit computer & using 64-bit Java to add `-d64` flag
+
+## More Server Info
+[Tutorials/Setting up a server](http://minecraft.gamepedia.com/Tutorials/Setting_up_a_server)
