@@ -3,6 +3,7 @@
 *.txt
 *.json
 *.log
+*.nex
 !package.json
 .DS_Store
 node_modules
