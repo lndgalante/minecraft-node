@@ -2,8 +2,9 @@
 Small script to launch a Minecraft server easily!
 
 ## Requirements
- * [Minecraft Server](https://minecraft.net)
+ * [Minecraft Server](https://minecraft.net/en/download/server)
  * [Node.js 7+](http://nodejs.org)
+ * [Java 8](https://java.com)
 
 ## How to
 
