@@ -58,7 +58,7 @@ This is not needed for LAN mode.
 ## Future features
 - [ ] Being able to install different mods from menu
 
-- [ ] Show private and public IP and port after server launches
+- [x] Show private and public IP and port after server launches
 
 - [x] Show recommended RAM on Setup
 

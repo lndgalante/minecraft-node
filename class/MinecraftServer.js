@@ -6,6 +6,8 @@ module.exports =
       this.spawn = require('child_process').spawn
       this.readlineSync = require('readline-sync')
       this.properties = require('properties-parser')
+      this.publicIp = require('public-ip')
+      this.internalIp = require('internal-ip')
       this.serverSetupFile = 'server-setup.json'
       this.minimumRamMb = 0,
       this.maximumRamMb = 0,
@@ -13,7 +15,7 @@ module.exports =
       this.gui = ''
     }
     menu () {
-      let selected = ['LAUNCH SERVER', 'DISPLAY SETUP', 'MODIFY SETUP', 'DISPLAY PROPERTIES', 'MODIFY PROPERTIES']
+      let selected = ['LAUNCH SERVER', 'DISPLAY SETUP', 'MODIFY SETUP', 'DISPLAY PROPERTIES', 'MODIFY PROPERTIES', 'SHOW PUBLIC AND INTERNAL IP']
       let index = this.readlineSync.keyInSelect(selected, 'Choose an option')
       console.log('')
       switch (selected[index]) {
@@ -70,6 +72,9 @@ module.exports =
             console.log('server.properties does not exist')
           }
           break
+        case 'SHOW PUBLIC AND INTERNAL IP':
+          this.showIps()
+          break
         default:
           break
       }
@@ -114,7 +119,9 @@ module.exports =
       })
     }
     launchServer () {
-      let child = this.spawn('java', ['-jar', this.serverFileName, '-Xms ${this.minimumRamMb}M', '-Xms ${this.maximumRamMb}M', this.gui], {stdio: 'inherit'})
+      let child = this.spawn('java', ['-jar', this.serverFileName, '-Xms ${this.minimumRamMb}M', '-Xms ${this.maximumRamMb}M', this.gui], {
+        stdio: 'inherit'
+      })
     }
     writeEula () {
       this.fs.writeFileSync('eula.txt', 'eula=true', (err) => {
@@ -284,5 +291,11 @@ module.exports =
     }
     saveProperties () {
       this.values.save()
+    }
+    showIps () {
+      console.log('Internal IP: ' + this.internalIp.v4())
+      this.publicIp.v4().then(ip => {
+        console.log('Public IP: ' + ip)
+      }).then(() => this.menu())
     }
 }
