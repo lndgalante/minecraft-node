@@ -1,7 +1,14 @@
-# minecraft-node
+## Description
 Small script to launch a Minecraft server easily!
 
 ---
+
+## Requirements
+ * [Minecraft Server](https://minecraft.net)
+ * [Node.js 7+](http://nodejs.org)
+
+---
+
 ## How to
 
 1) Launch `npm install`
