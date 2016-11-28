@@ -26,6 +26,15 @@ Small script to launch a Minecraft server easily!
 
 4) Write false and press ENTER
 
+## Port Forwarding
+This is not needed for LAN mode.
+
+1) Do not to touch the IP configuration on the MODIFY PROPERTIES menu, option 22
+
+2) Use TCP ports and above 1024 (most used is 25565)
+
+3) Point it to your server local IP
+
 ## Future features
 - [ ] Being able to install different mods from menu
 
@@ -36,3 +45,5 @@ Small script to launch a Minecraft server easily!
 - [ ] Automatic deploy to mount a server on Heroku
 
 - [x] Take input to do admin commands like `/op name`
+
+- [ ] Detect if the server is on a 64-bit computer & using 64-bit Java to add `-d64` flag
