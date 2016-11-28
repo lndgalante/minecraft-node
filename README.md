@@ -2,9 +2,19 @@
 Small script to launch a Minecraft server easily!
 
 ---
+## How to
+
+1) Launch `npm install`
+
+2) Launch `node index.js`
+
+3) Select LAUNCH SERVER with character 1 and press ENTER
+
+4) Enjoy!
+
+---
 
 ## LAN Mode
-If you want to play in LAN mode you must follow this steps:
 
 1) Launch with `node index.js`
 
@@ -16,7 +26,7 @@ If you want to play in LAN mode you must follow this steps:
 
 ---
 
-## BrainStorming
+## Future features
 - [ ] Being able to install different mods
 
 - [ ] Show private and public IP and port after server launches
