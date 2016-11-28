@@ -27,11 +27,11 @@ Small script to launch a Minecraft server easily!
 4) Write false and press ENTER
 
 ## Future features
-- [ ] Being able to install different mods
+- [ ] Being able to install different mods from menu
 
 - [ ] Show private and public IP and port after server launches
 
-- [ ] Show recommended RAM on Setup
+- [x] Show recommended RAM on Setup
 
 - [ ] Automatic deploy to mount a server on Heroku
 

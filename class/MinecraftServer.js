@@ -82,8 +82,8 @@ module.exports =
     }
     writeSetup () {
       console.log('Configure your server options')
-      this.minimumRamMb = this.readlineSync.question('Insert the minimum RAM in MB: ')
-      this.maximumRamMb = this.readlineSync.question('Insert the maximum RAM in MB: ')
+      this.minimumRamMb = this.readlineSync.question('Insert the minimum RAM in MB (1024MB Recommended or More): ')
+      this.maximumRamMb = this.readlineSync.question('Insert the maximum RAM in MB (1024MB Recommended or More): ')
       this.serverFileName = this.readlineSync.question('Insert the server file name: ') + '.jar'
       console.log('Want to launch server with a GUI?')
       let selected = ['YES', 'NO']
