@@ -114,19 +114,7 @@ module.exports =
       })
     }
     launchServer () {
-      let child = this.spawn(
-        'java', ['-jar', this.serverFileName, '-Xms ${this.minimumRamMb}M', '-Xms ${this.maximumRamMb}M', this.gui]
-      )
-      child.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`)
-      })
-      child.stderr.on('data', (data) => {
-        console.log(`stderr: ${data}`)
-      })
-      child.on('close', (code) => {
-        // console.log(`child process exited with code ${code}`)
-        this.menu()
-      })
+      let child = this.spawn('java', ['-jar', this.serverFileName, '-Xms ${this.minimumRamMb}M', '-Xms ${this.maximumRamMb}M', this.gui], {stdio: 'inherit'})
     }
     writeEula () {
       this.fs.writeFileSync('eula.txt', 'eula=true', (err) => {

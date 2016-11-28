@@ -33,4 +33,4 @@ Small script to launch a Minecraft server easily!
 
 - [ ] Show recommended RAM on Setup
 
-- [ ] Take input to do admin commands like `/op name`
+- [x] Take input to do admin commands like `/op name`
