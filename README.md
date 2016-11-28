@@ -10,7 +10,7 @@ Small script to launch a Minecraft server easily!
 
 1) Launch `npm install`
 
-2) Launch `node index.js`
+2) Launch `npm start`
 
 3) Select LAUNCH SERVER with character 1 and press ENTER
 
@@ -19,7 +19,7 @@ Small script to launch a Minecraft server easily!
 ## Allow un-authenticated users
 This is not recommended but will allow you to try your server quickly
 
-1) Launch with `node index.js`
+1) Launch `npm start`
 
 2) Select MODIFY PROPERTIES with character 5 and press ENTER
 
@@ -30,7 +30,7 @@ This is not recommended but will allow you to try your server quickly
 ## Allow only certain usernames (whitelist)
 Doing this only the usernames in the whitelist will be able to connect to your server
 
-1) Launch with `node index.js`
+1) Launch `npm start`
 
 2) Select MODIFY PROPERTIES with character 5 and press ENTER
 
