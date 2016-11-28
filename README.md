@@ -32,3 +32,5 @@ Small script to launch a Minecraft server easily!
 - [ ] Show private and public IP and port after server launches
 
 - [ ] Show recommended RAM on Setup
+
+- [ ] Take input to do admin commands like `/op name`
