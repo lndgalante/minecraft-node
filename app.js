@@ -1,17 +1,22 @@
 const MinecraftServer = require('./class/MinecraftServer')
 const minecraftServer = new MinecraftServer()
 
-const Agreement = require('./class/Agreement')
-const agreement = new Agreement()
+// const Agreement = require('./class/Agreement')
+// const agreement = new Agreement()
 
-const Properties = require('./class/Properties')
-const properties = new Properties()
+// const Properties = require('./class/Properties')
+// const properties = new Properties()
 
-// properties.menu()
+// const Setup = require('./class/Setup')
+// const setup = new Setup()
 
-agreement.writeEula()
+// agreement.writeEula()
 console.log('')
-minecraftServer.readSetup()
+// properties.menu()
+console.log('')
+minecraftServer.menu()
+
+// minecraftServer.readSetup()
 
 // minecraftServer.readProperties() minecraftServer.welcome()
 // minecraftServer.runSetup() minecraftServer.showSetup()

@@ -12,17 +12,17 @@ module.exports =
       switch (selected[index]) {
         case 'DISPLAY PROPERTIES':
           this.checkFileExistance(() => {
-            this.read()
-            this.display()
+            this.readProperties()
+            this.displayProperties()
             this.menu()
           })
           break
         case 'MODIFY PROPERTIES':
           this.checkFileExistance(() => {
-            this.read()
-            this.display()
-            this.write()
-            this.save()
+            this.readProperties()
+            this.displayProperties()
+            this.writeProperties()
+            this.saveProperties()
             this.menu()
           })
           break
@@ -37,10 +37,10 @@ module.exports =
         console.log('server.properties does not exist')
       }
     }
-    read () {
+    readProperties () {
       this.values = this.properties.createEditor('server.properties')
     }
-    write () {
+    writeProperties () {
       console.log('')
       let index = this.readlineSync.question('Choose an property to modify: ')
       console.log('')
@@ -157,7 +157,7 @@ module.exports =
           break
       }
     }
-    display () {
+    displayProperties () {
       console.log(`[1] Maximum Tick Time: ${this.values.get('max-tick-time') || 'No value assigned'}`)
       console.log(`[2] Generator Settings: ${this.values.get('generator-settings') || 'No value assigned'}`)
       console.log(`[3] Force Game Mode: ${this.values.get('force-gamemode') || 'No value assigned'}`)
@@ -195,7 +195,7 @@ module.exports =
       console.log(`[35] Enable Rcon: ${this.values.get('enable-rcon') || 'No value assigned'}`)
       console.log(`[36] Server Name (motd): ${this.values.get('motd') || 'No value assigned'}`)
     }
-    save () {
+    saveProperties () {
       this.values.save()
     }
 }
