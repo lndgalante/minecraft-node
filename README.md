@@ -72,6 +72,9 @@ This is not needed for LAN mode.
 
 ## More Server Info
 [Tutorials/Setting up a server](http://minecraft.gamepedia.com/Tutorials/Setting_up_a_server)
+
 [Hardware Requirements for Official Minecraft Server](http://minecraft.gamepedia.com/Server/Requirements)
+
 [Hardware Requirements for Custom Servers](http://minecraft.gamepedia.com/Server/Requirements/Dedicated)
+
 [Can I host a Minecraft Server?](http://canihostaminecraftserver.com/)
