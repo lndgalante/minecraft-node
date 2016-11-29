@@ -10,13 +10,11 @@ Small script to launch a Minecraft server easily!
 
 1) Paste in this folder the server jar file you downloaded from Minecraft official site.
 
-2) Launch `npm install`
+2) Launch in your terminal: `npm install` and `npm start`
 
-3) Launch `npm start`
+3) Select LAUNCH SERVER with character 1 and press ENTER
 
-4) Select LAUNCH SERVER with character 1 and press ENTER
-
-5) Enjoy!
+4) Enjoy!
 
 ## Allow un-authenticated users
 This is not recommended but will allow you to try your server quickly
