@@ -56,7 +56,7 @@ This is not needed for LAN mode.
 3) Point it to your server local IP
 
 ## Future features
-- [ ] Being able to install different mods from menu
+- [x] Being able to install different mods from menu
 
 - [x] Show private and public IP and port after server launches
 
