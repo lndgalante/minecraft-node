@@ -7,15 +7,24 @@ module.exports =
       this.readlineSync = require('readline-sync')
       this.properties = require('properties-parser')
       this.publicIp = require('public-ip')
+      this.request = require('request')
+      this.progress = require('request-progress')
       this.internalIp = require('internal-ip')
       this.serverSetupFile = 'server-setup.json'
-      this.minimumRamMb = 0,
-      this.maximumRamMb = 0,
-      this.serverFileName = '',
+      this.modsInstalledFile = 'mods-installed.json'
+      this.minimumRamMb = 0
+      this.maximumRamMb = 0
+      this.serverFileName = ''
       this.gui = ''
     }
     menu () {
-      let selected = ['LAUNCH SERVER', 'DISPLAY SETUP', 'MODIFY SETUP', 'DISPLAY PROPERTIES', 'MODIFY PROPERTIES', 'SHOW PUBLIC AND INTERNAL IP']
+      let selected = ['LAUNCH SERVER',
+        'DISPLAY SETUP',
+        'DISPLAY PROPERTIES',
+        'MODIFY SETUP',
+        'MODIFY PROPERTIES',
+        'ADD MOD',
+        'SHOW IP']
       let index = this.readlineSync.keyInSelect(selected, 'Choose an option')
       console.log('')
       switch (selected[index]) {
@@ -33,11 +42,20 @@ module.exports =
         case 'DISPLAY SETUP':
           if (this.fs.existsSync(this.serverSetupFile)) {
             this.readSetup()
-            this.displaySetup()
+            this.displaySetup('This is your setup configuration: ')
             this.menu()
           } else {
             console.log('You do not have a setup configuration')
             this.menu()
+          }
+          break
+        case 'DISPLAY PROPERTIES':
+          if (this.fs.existsSync('server.properties')) {
+            this.readProperties()
+            this.displayProperties()
+            this.menu()
+          } else {
+            console.log('server.properties does not exist')
           }
           break
         case 'MODIFY SETUP':
@@ -52,15 +70,6 @@ module.exports =
             this.menu()
           }
           break
-        case 'DISPLAY PROPERTIES':
-          if (this.fs.existsSync('server.properties')) {
-            this.readProperties()
-            this.displayProperties()
-            this.menu()
-          } else {
-            console.log('server.properties does not exist')
-          }
-          break
         case 'MODIFY PROPERTIES':
           if (this.fs.existsSync('server.properties')) {
             this.readProperties()
@@ -72,7 +81,10 @@ module.exports =
             console.log('server.properties does not exist')
           }
           break
-        case 'SHOW PUBLIC AND INTERNAL IP':
+        case 'ADD MOD':
+          this.addMod()
+          break
+        case 'SHOW IP':
           this.showIps()
           break
         default:
@@ -291,6 +303,33 @@ module.exports =
     }
     saveProperties () {
       this.values.save()
+    }
+    addMod () {
+      this.modLink = this.readlineSync.question('Insert the mod download link: ')
+      while (!this.modLink.includes('.jar')) {
+        console.log('You can add only .jar mods')
+        this.modLink = this.readlineSync.question('Insert the mod download link: ')
+      }
+      this.modName = this.readlineSync.question('Insert the mod name: ')
+
+      if (!this.fs.existsSync('./mods')) {
+        console.log('Mods folder do not exists. Creating...')
+        this.fs.mkdirSync('./mods')
+      } else {
+        console.log('Mods folder exists.')
+      }
+
+      this.progress(this.request(this.modLink))
+        .on('progress', (state) => console.log(state.percentage.toFixed(4) + '%'))
+        .on('error', (err) => console.log(err))
+        .on('end', () => {
+          console.log('100%')
+          console.log('Your mod has been downloaded and installed!')
+          this.menu()
+        })
+        .pipe(this.fs.createWriteStream(`./mods/${this.modName}.jar`))
+
+    // this.jsonfile.writeFileSync(this.modsInstalledFile, {name: this.modName}, {flag: 'a'})
     }
     showIps () {
       console.log('Internal IP: ' + this.internalIp.v4())
