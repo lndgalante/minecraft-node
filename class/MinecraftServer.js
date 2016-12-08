@@ -24,7 +24,8 @@ module.exports =
         'MODIFY SETUP',
         'MODIFY PROPERTIES',
         'ADD MOD',
-        'SHOW IP']
+        'SHOW IP'
+      ]
       let index = this.readlineSync.keyInSelect(selected, 'Choose an option')
       console.log('')
       switch (selected[index]) {
@@ -327,10 +328,7 @@ module.exports =
           this.menu()
         })
         .pipe(this.fs.createWriteStream(`./mods/${this.modName}.jar`))
-
       this.jsonfile.writeFileSync(this.modsInstalledFile, {name: this.modName}, {flag: 'a',spaces: 2})
-
-      console.dir(this.jsonfile.readFileSync(this.modsInstalledFile))
     }
     showIps () {
       console.log('Internal IP: ' + this.internalIp.v4())
