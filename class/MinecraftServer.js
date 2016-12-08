@@ -24,7 +24,8 @@ module.exports =
         'MODIFY SETUP',
         'MODIFY PROPERTIES',
         'ADD MOD',
-        'SHOW IP']
+        'SHOW IP'
+      ]
       let index = this.readlineSync.keyInSelect(selected, 'Choose an option')
       console.log('')
       switch (selected[index]) {
@@ -306,7 +307,7 @@ module.exports =
     }
     addMod () {
       this.modLink = this.readlineSync.question('Insert the mod download link: ')
-      while (!this.modLink.includes('.jar')) {
+      while (!this.modLink.includes('.jar', this.modLink.length - 4)) {
         console.log('You can add only .jar mods')
         this.modLink = this.readlineSync.question('Insert the mod download link: ')
       }
@@ -320,16 +321,17 @@ module.exports =
       }
 
       this.progress(this.request(this.modLink))
-        .on('progress', (state) => console.log(state.percentage.toFixed(4) + '%'))
+        .on('progress', (state) => console.log('Downloading ...'))
         .on('error', (err) => console.log(err))
         .on('end', () => {
-          console.log('100%')
           console.log('Your mod has been downloaded and installed!')
           this.menu()
         })
         .pipe(this.fs.createWriteStream(`./mods/${this.modName}.jar`))
 
-    // this.jsonfile.writeFileSync(this.modsInstalledFile, {name: this.modName}, {flag: 'a'})
+      this.jsonfile.writeFile(this.modsInstalledFile, { name: this.modName})
+
+      console.log(this.jsonfile.readFileSync(this.modsInstalledFile))
     }
     showIps () {
       console.log('Internal IP: ' + this.internalIp.v4())

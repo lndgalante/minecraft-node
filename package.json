@@ -4,6 +4,7 @@
   "description": "Small script to launch a Minecraft server easily!",
   "main": "app.js",
   "dependencies": {
+    "appendjson": "^0.1.2",
     "internal-ip": "^1.2.0",
     "jsonfile": "^2.4.0",
     "properties-parser": "^0.3.1",
