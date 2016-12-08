@@ -4,6 +4,7 @@
 *.json
 *.log
 *.nex
+*.cfg
 !package.json
 .DS_Store
 node_modules
