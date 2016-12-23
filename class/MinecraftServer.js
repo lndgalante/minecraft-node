@@ -358,8 +358,7 @@ module.exports =
           this.menu()
         })
         .pipe(this.fs.createWriteStream(`./mods/${this.modName}.jar`))
-<<<<<<< HEAD
-
+        
       if (this.fs.existsSync(this.modsInstalledFile)) {
         const modsInstalled = this.jsonfile.readFileSync(this.modsInstalledFile)
         const newMod = {
@@ -394,9 +393,7 @@ module.exports =
       delete this.modsInstalled[modToRemove]
       this.fs.writeFileSync(this.modsInstalledFile, this.modsInstalled)
       console.log(this.modsInstalled)
-=======
       this.jsonfile.writeFileSync(this.modsInstalledFile, {name: this.modName}, {flag: 'a',spaces: 2})
->>>>>>> 710e37b307fb32ed7d5ca2f8ecb55a5c3cccfa79
     }
     showIps () {
       console.log('Internal IP: ' + this.internalIp.v4())
