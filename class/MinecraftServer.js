@@ -15,15 +15,19 @@ module.exports =
       this.minimumRamMb = 0
       this.maximumRamMb = 0
       this.serverFileName = ''
+      this.modsInstalled = {}
       this.gui = ''
     }
     menu () {
-      let selected = ['LAUNCH SERVER',
+      let selected = [
+        'LAUNCH SERVER',
         'DISPLAY SETUP',
         'DISPLAY PROPERTIES',
+        'DISPLAY MODS',
         'MODIFY SETUP',
         'MODIFY PROPERTIES',
         'ADD MOD',
+        'REMOVE MOD',
         'SHOW IP'
       ]
       let index = this.readlineSync.keyInSelect(selected, 'Choose an option')
@@ -46,7 +50,7 @@ module.exports =
             this.displaySetup('This is your setup configuration: ')
             this.menu()
           } else {
-            console.log('You do not have a setup configuration')
+            console.log('You have no setup yet')
             this.menu()
           }
           break
@@ -56,7 +60,18 @@ module.exports =
             this.displayProperties()
             this.menu()
           } else {
-            console.log('server.properties does not exist')
+            console.log('You have no properties yet')
+            this.menu()
+          }
+          break
+        case 'DISPLAY MODS':
+          if (this.fs.existsSync(this.modsInstalledFile)) {
+            this.readMods()
+            this.displayMods()
+            this.menu()
+          } else {
+            console.log('You have no mods yet')
+            this.menu()
           }
           break
         case 'MODIFY SETUP':
@@ -84,6 +99,17 @@ module.exports =
           break
         case 'ADD MOD':
           this.addMod()
+          break
+        case 'REMOVE MOD':
+          if (this.fs.existsSync(this.modsInstalledFile)) {
+            this.readMods()
+            this.displayMods()
+            this.removeMod()
+            this.menu()
+          } else {
+            console.log('You have no mods yet')
+            this.menu()
+          }
           break
         case 'SHOW IP':
           this.showIps()
@@ -119,8 +145,8 @@ module.exports =
       console.log('------------------------------------------------')
       console.log(`Minimum Ram: ${this.minimumRamMb}MB`)
       console.log(`Maximum Ram: ${this.maximumRamMb}MB`)
-      console.log(`Server file: ${this.serverFileName}`)
-      ;(this.gui === 'nogui') ? console.log('GUI: Deactivated') : console.log('GUI: Activated')
+      console.log(`Server file: ${this.serverFileName}`);
+      (this.gui === 'nogui') ? console.log('GUI: Deactivated') : console.log('GUI: Activated')
       console.log('------------------------------------------------')
     }
     saveSetup () {
@@ -306,12 +332,16 @@ module.exports =
       this.values.save()
     }
     addMod () {
-      this.modLink = this.readlineSync.question('Insert the mod download link: ')
+      // this.modLink = this.readlineSync.question('Insert the mod download link: ')
+      this.modLink = 'http://addons.curse.cursecdn.com/files/2354/579/journeymap-1.11-5.3.2.jar'
+
       while (!this.modLink.includes('.jar', this.modLink.length - 4)) {
         console.log('You can add only .jar mods')
         this.modLink = this.readlineSync.question('Insert the mod download link: ')
       }
-      this.modName = this.readlineSync.question('Insert the mod name: ')
+      // this.modName = this.readlineSync.question('Insert the mod name: ')
+
+      this.modName = Math.random().toString(36).substring(7)
 
       if (!this.fs.existsSync('./mods')) {
         console.log('Mods folder do not exists. Creating...')
@@ -329,9 +359,40 @@ module.exports =
         })
         .pipe(this.fs.createWriteStream(`./mods/${this.modName}.jar`))
 
-      this.jsonfile.writeFile(this.modsInstalledFile, { name: this.modName})
-
-      console.log(this.jsonfile.readFileSync(this.modsInstalledFile))
+      if (this.fs.existsSync(this.modsInstalledFile)) {
+        const modsInstalled = this.jsonfile.readFileSync(this.modsInstalledFile)
+        const newMod = {
+          [this.modName]: this.modName
+        }
+        this.jsonfile.writeFile(this.modsInstalledFile, Object.assign(modsInstalled, newMod), {
+          flag: 'a'
+        })
+        console.log('existe')
+      } else {
+        this.jsonfile.writeFile(this.modsInstalledFile, {
+          name: this.modName
+        })
+        console.log('nooo existe')
+      }
+    }
+    readMods () {
+      this.modsInstalled = this.jsonfile.readFileSync(this.modsInstalledFile)
+    }
+    displayMods () {
+      let i = -1
+      for (let key in this.modsInstalled) {
+        ++i
+        console.log(`[${i}] Mod: ${this.modsInstalled[key]}`)
+      }
+    }
+    removeMod () {
+      console.log('')
+      const index = this.readlineSync.question('Choose an mod to remove: ')
+      const modToRemove = Object.keys(this.modsInstalled)[index]
+      this.fs.unlink(`./mods/${modToRemove}.jar`)
+      delete this.modsInstalled[modToRemove]
+      this.fs.writeFileSync(this.modsInstalledFile, this.modsInstalled)
+      console.log(this.modsInstalled)
     }
     showIps () {
       console.log('Internal IP: ' + this.internalIp.v4())
@@ -339,4 +400,4 @@ module.exports =
         console.log('Public IP: ' + ip)
       }).then(() => this.menu())
     }
-}
+  }
